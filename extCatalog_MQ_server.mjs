@@ -68,7 +68,7 @@ if (checkItemsEmpty) {
   fetchCatalog();
 }
 
-ron.schedule('0 6,9,15,18,20,0 * * *', () => {
+cron.schedule('0 6,9,15,18,20,0 * * *', () => {
   fetchCatalog();
   // Add the task you want to run here
 });
