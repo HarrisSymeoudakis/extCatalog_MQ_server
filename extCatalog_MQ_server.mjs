@@ -43,9 +43,9 @@ async function fetchCatalog() {
     }
 
     const fetchWarehouses = items.map(async (item) => {
-      const warehouseId = await fetchWarehouse(item.identifier.id); // Fetch price for each item
-      if (warehouseId) {
-        item.warehouseId = warehouseId; // Assign price to item if available
+      const warehouse = await fetchWarehouse(item.identifier.id); // Fetch price for each item
+      if (warehouse) {
+        item.warehouse = warehouse; // Assign price to item if available
       }
     });
 
@@ -68,7 +68,7 @@ if (checkItemsEmpty) {
   fetchCatalog();
 }
 
-cron.schedule('0 6,9,15,18,20,0 * * *', () => {
+cron.schedule("0 6,9,15,18,20,0 * * *", () => {
   fetchCatalog();
   // Add the task you want to run here
 });
