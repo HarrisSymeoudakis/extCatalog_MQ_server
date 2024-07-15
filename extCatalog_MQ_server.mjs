@@ -111,7 +111,7 @@ async function fetchWarehouse(item) {
 
     if (availableStore) {
       console.log(availableStore.id);
-      return availableStore.id;
+      return availableStore;
     } else {
       console.log("No warehouse with available quantity found.");
       return null;
