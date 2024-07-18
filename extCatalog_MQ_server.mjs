@@ -4,8 +4,8 @@ import express from "express";
 import cors from "cors";
 import cron from "node-cron";
 
-const username = "90478305_003_TEST\\AI";
-const password = "1234";
+const username = "90571062_002_TEST\\Harris";
+const password = "Cegid2";
 const auth = Buffer.from(`${username}:${password}`).toString("base64");
 
 const app = express();
@@ -29,16 +29,17 @@ let items;
 async function fetchCatalog() {
   try {
     const allCatalogUrl =
-      "https://extcatalogvw-server.onrender.com/items/getAllCatalog";
+      "https://extcatalog-server.onrender.com/items/getAllCatalog";
     const response = await axios.get(allCatalogUrl, { headers });
     console.log(response.data); // Log the response data
     items = response.data;
 
     const allPricesList =
-      "https://extcatalogvw-server.onrender.com/items/getAllPrices";
+      "https://extcatalog-server.onrender.com/items/getAllPrices";
     const priceResponse = await axios.get(allPricesList, { headers });
 
     for (let i = 0; i < items.length; i++) {
+      console.log(priceResponse.data);
       items[i].price = priceResponse.data.priceLists[i];
     }
 
@@ -76,7 +77,7 @@ cron.schedule("0 6,9,15,18,20,0 * * *", () => {
 
 async function fetchWarehouse(item) {
   try {
-    const warehouseUrl = `https://90478305-partner-retail-ondemand.cegid.cloud/Y2/90478305_003_TEST/api/available-quantities/v1?itemIds=${encodeURIComponent(
+    const warehouseUrl = `https://90571062-test-retail-ondemand.cegid.cloud/Y2/90571062_002_TEST/api/available-quantities/v1?itemIds=${encodeURIComponent(
       item
     )}`;
 
@@ -129,7 +130,7 @@ async function fetchWarehouse(item) {
 async function fetchImage(item) {
   try {
     const response = await fetch(
-      `https://extcatalogvw-server.onrender.com/items/Image/${encodeURIComponent(
+      `https://extcatalog-server.onrender.com/items/Image/${encodeURIComponent(
         item
       )}`
     );
