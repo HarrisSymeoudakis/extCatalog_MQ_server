@@ -68,13 +68,15 @@ if (checkItemsEmpty) {
   fetchCatalog();
 }
 
-cron.schedule("0 6,9,15,18,20,0 * * *", () => {
+cron.schedule("0 6,9,11,15,18,20,0 * * *", () => {
   fetchCatalog();
   // Add the task you want to run here
 });
 // Call the async function
 
-async function fetchWarehouse(item) {
+fetchCatalog();
+
+async function fetchhouse(item) {
   try {
     const warehouseUrl = `https://90478305-partner-retail-ondemand.cegid.cloud/Y2/90478305_003_TEST/api/available-quantities/v1?itemIds=${encodeURIComponent(
       item
