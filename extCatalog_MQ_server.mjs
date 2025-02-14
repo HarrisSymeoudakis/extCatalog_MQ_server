@@ -77,7 +77,7 @@ cron.schedule("0 6,9,11,15,18,20,0 * * *", () => {
 
 fetchCatalog();
 
-async function fetchhouse(item) {
+async function fetchWarehouse(item) {
   try {
     const warehouseUrl = `https://90478305-partner-retail-ondemand.cegid.cloud/Y2/90478305_003_TEST/api/available-quantities/v1?itemIds=${encodeURIComponent(
       item
